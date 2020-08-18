@@ -30,6 +30,14 @@ api.post(
   })
 );
 
+// api.post(
+//   "/reset",
+//   passport.authenticate("local", {
+
+//   })
+// );
+
+
 // Express app
 const cookieConfig = {
   cookie: {

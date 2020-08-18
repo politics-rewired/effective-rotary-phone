@@ -1,6 +1,7 @@
 import { ApolloServer, gql } from "apollo-server-express";
 import { db } from '../lib/db';
 
+
 const typeDefs = gql`
   type User {
     id: ID!

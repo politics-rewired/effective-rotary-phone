@@ -4,6 +4,7 @@ import { Switch, Route } from "react-router-dom";
 import { Home } from "./components/home";
 import { Login } from "./components/login";
 import { Dashboard } from "./components/dashboard";
+import { ForgotPassword } from './components/forgotpassword';
 
 const loginLayoutStyle = {
   width: "400px",
@@ -13,6 +14,9 @@ const loginLayoutStyle = {
 export const App = () => (
   <div style={loginLayoutStyle}>
     <Switch>
+      <Route path="forgotpassword">
+        <ForgotPassword />
+      </Route>
       <Route path="/login">
         <Login />
       </Route>
