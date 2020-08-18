@@ -1,7 +1,13 @@
 import { Strategy as LocalStrategy } from "passport-local";
+// import passportJWT from 'passport-jwt';
+
 import bcrypt from "bcrypt";
 
 import { db } from "./db";
+import passport from "passport";
+
+// import sgMail from '@sendgrid/mail';
+// sgMail.setApiKey(process.env.SENDGRID_API_KEY);
 
 export const strategy = new LocalStrategy(
   {
@@ -13,6 +19,7 @@ export const strategy = new LocalStrategy(
       .where({ email: username })
       .first()
       .then((user) => {
+        console.log(user)
         if (!user) {
           return done(null, false, { message: "Unknown email." });
         }
@@ -23,7 +30,6 @@ export const strategy = new LocalStrategy(
 
           if (!result)
             return done(null, false, { message: "Incorrect password." });
-
           return done(null, user);
         });
       })
@@ -32,3 +38,15 @@ export const strategy = new LocalStrategy(
       });
   }
 );
+
+// passport.use(
+//   new JWTStrategy(
+//     {
+//       jwtfromRequest: ExtractJWT.fromAuthHeaderAsBearerToken(),
+//       secretOrKey: Buffer.from(process.env.JWT_SECRET || "devSecret", "base64")
+//     }, 
+//     // async function(jwtPayload, cb){
+//     //   const user = await Users.fi
+//     // }
+//   )
+// )
